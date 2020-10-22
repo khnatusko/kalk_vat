@@ -3,27 +3,37 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://xmlns.jcp.org/jsf/core">
 <h:head>
 	<title>Kalkulator VAT</title>
 </h:head>
 <h:body>
-
-	<h1>Kalkulator VAT</h1>
+<p:panel header="Kalkulator VAT" style="margin: 1em auto;">
+	
 
 	<h:form id="bla">
-  		Brutto: <h:inputText value="#{kalkBB.brutto}" />
-		<br />
-  		Netto: <h:inputText value="#{kalkBB.netto}" />
-		<br />
-		Stawka VAT: <h:inputText value="#{kalkBB.vat}" />
-		<br />
-		<h:messages id="msg" />
+	<h:panelGrid id="grid" columns="3" cellpadding="5">
+	
+				<p:outputLabel for="brutto" value="Brutto:" />
+  				<p:inputText id="brutto" value="#{kalkBB.brutto}" required="true" requiredMessage="Brak kwoty brutto"/>
+  				<p:messages for="brutto" />
 
-		<h:commandButton value="Oblicz" action="#{kalkBB.kalk()}"/>
-		<br />
-		
+				<p:outputLabel for="netto" value="Netto:" />
+  				<p:inputText id="netto" value="#{kalkBB.netto}" required="true" requiredMessage="Brak kwoty netto"/>
+  				<p:messages for="netto" />
+  				
+				<p:outputLabel for="vat" value="Stawka VAT:" />
+				<p:inputText id="vat" value="#{kalkBB.vat}" required="true" requiredMessage="Brak stawki VAT"/>
+				<p:messages for="vat" />
+
+				<p:commandButton value="Oblicz" action="#{kalkBB.kalk()}" update="@form"/>
+				
+	</h:panelGrid>
+	
+				<p:messages id="msg" />
+				
 	</h:form>
-
+</p:panel>
 </h:body>
 </html>
