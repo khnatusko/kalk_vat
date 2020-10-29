@@ -11,62 +11,73 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 //@SessionScoped
 public class KalkBB {
-	private String brutto;
-	private String netto;
-	private String vat;
+	private Double brutto;
+	private Double netto;
+	private Double vat;
 	private Double resultbrutto;
 	private Double resultnetto;
 
 	@Inject
 	FacesContext ctx;
 
-	
 
-	public String getBrutto() {
+
+
+	public Double getBrutto() {
 		return brutto;
 	}
 
-	public void setBrutto(String brutto) {
+
+	public void setBrutto(Double brutto) {
 		this.brutto = brutto;
 	}
 
-	public String getNetto() {
+
+	public Double getNetto() {
 		return netto;
 	}
 
-	public void setNetto(String netto) {
+
+	public void setNetto(Double netto) {
 		this.netto = netto;
 	}
 
-	public String getVat() {
+
+	public Double getVat() {
 		return vat;
 	}
 
-	public void setVat(String vat) {
+
+	public void setVat(Double vat) {
 		this.vat = vat;
 	}
+
 
 	public Double getResultbrutto() {
 		return resultbrutto;
 	}
 
+
 	public void setResultbrutto(Double resultbrutto) {
 		this.resultbrutto = resultbrutto;
 	}
+
 
 	public Double getResultnetto() {
 		return resultnetto;
 	}
 
+
 	public void setResultnetto(Double resultnetto) {
 		this.resultnetto = resultnetto;
 	}
 
+
 	public boolean doTheMath() {
 		try {
-			double brutto = Double.parseDouble(this.brutto);
-			double netto = Double.parseDouble(this.netto);
-			double vat = Double.parseDouble(this.vat);
+			//double brutto = Double.parseDouble(this.brutto);
+			//double netto = Double.parseDouble(this.netto);
+			//double vat = Double.parseDouble(this.vat);
 			
 			resultbrutto = brutto / (1 + vat);
 			resultnetto = netto + (netto* vat);

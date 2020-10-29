@@ -15,16 +15,26 @@
 	<h:form id="bla">
 	<h:panelGrid id="grid" columns="3" cellpadding="5">
 	
-				<p:outputLabel for="brutto" value="Brutto:" />
-  				<p:inputText id="brutto" value="#{kalkBB.brutto}" required="true" requiredMessage="Brak kwoty brutto"/>
+				<h:outputLabel for="brutto" value="Brutto:" />
+  				<h:inputText id="brutto" value="#{kalkBB.brutto}" required="true" requiredMessage="Brak kwoty brutto" converterMessage="Kwota brutto musi być liczba" 
+  				validatorMessage="Kwota Brutto musi być maxymalnie 1000">
+  				<f:validateDoubleRange maximum="1000"/>
+  				</h:inputText>
   				<p:messages for="brutto" />
 
-				<p:outputLabel for="netto" value="Netto:" />
-  				<p:inputText id="netto" value="#{kalkBB.netto}" required="true" requiredMessage="Brak kwoty netto"/>
-  				<p:messages for="netto" />
+				<h:outputLabel for="netto" value="Netto:" />
+  				<h:inputText value="#{kalkBB.netto}" required="true" requiredMessage="Brak kwoty netto" converterMessage="Kwota netto musi być liczba"
+  				validatorMessage="Kwota Netto musi być maxymalnie 1000" id="netto">
+  				<f:validateDoubleRange maximum="1000"/>
+  				</h:inputText>
+  				<p:messages for="netto" />	
   				
-				<p:outputLabel for="vat" value="Stawka VAT:" />
-				<p:inputText id="vat" value="#{kalkBB.vat}" required="true" requiredMessage="Brak stawki VAT"/>
+				<h:outputLabel for="vat" value="Stawka VAT:" />
+				<h:inputText value="#{kalkBB.vat}" required="true" requiredMessage="Brak stawki VAT" converterMessage="Vat musi być liczbą"
+				validatorMessage="Kwota VAT musi być od 0.03 do 0.23" id="vat">
+				
+				<f:validateDoubleRange maximum="0.23"/>
+				</h:inputText>
 				<p:messages for="vat" />
 
 				<p:commandButton value="Oblicz" action="#{kalkBB.kalk()}" update="@form"/>
